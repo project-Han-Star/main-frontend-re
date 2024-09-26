@@ -6,7 +6,7 @@ import Input from "../../components/Input";
 
 const PossibilityChildren = () => {
   const navigate = useNavigate();
-  const [answer, setAnswer] = useState<boolean | undefined>(false);
+  const [answer, setAnswer] = useState<boolean | undefined>(undefined); // 미성년자 자녀 여부 (답변이 하나일 경우, answer 로 설정.)
   const [value, setValue] = useState<string>("");
 
   const HandleChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -22,13 +22,16 @@ const PossibilityChildren = () => {
           <div className="flex gap-x-4 mt-8">
             <PossibilityButton
               onClick={() => setAnswer(true)}
-              activated={answer}
+              activated={answer === true}
             >
               네
             </PossibilityButton>
             <PossibilityButton
               onClick={() => setAnswer(false)}
-              activated={!answer}
+              activated={
+                answer ===
+                false /* answer 가 undefined 일때 활성화를 방지하기 위함 */
+              }
             >
               아니요
             </PossibilityButton>
@@ -50,11 +53,11 @@ const PossibilityChildren = () => {
           )}
 
           <Button
-            onClick={() => navigate("../")}
+            onClick={() => navigate("../spouse")}
             className="w-[404px] text-sm self-center rounded-xl absolute bottom-20"
             secondary
           >
-            시작하기
+            다음으로
           </Button>
           <p className="self-center text-sm font-bold absolute bottom-10">
             뒤로가기

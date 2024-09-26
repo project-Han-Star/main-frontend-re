@@ -18,7 +18,7 @@ const PossibilityButton: FC<Props> = ({
       onClick={onClick}
       className={twMerge(
         `${activated ? "border-[#4571e5]" : "border-[#00000080]"}`,
-        "w-[104px] h-[68px] border-2 rounded-xl transition"
+        "w-[104px] h-[68px] border-2 rounded-xl transition font-bold"
       )}
     >
       {children}

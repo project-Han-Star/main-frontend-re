@@ -1,6 +1,8 @@
+import { useNavigate } from "react-router";
 import Button from "../components/Button";
 
 const MainPage = () => {
+  const navigate = useNavigate();
   return (
     <div className="bg-[#e7e9f5]">
       <div className="flex h-screen bg-[#4571e5] justify-center items-center gap-[60px] shadow-[0_4px_30px_0_rgba(0,0,0,0.2)]">
@@ -15,7 +17,9 @@ const MainPage = () => {
           </p>
           <div className="flex gap-[20px]">
             <Button>신청하기</Button>
-            <Button secondary>신청하기</Button>
+            <Button onClick={() => navigate("/board")} secondary>
+              신청하기
+            </Button>
           </div>
         </div>
         <div className="w-[524px] h-[531px] bg-white flex justify-center items-center">

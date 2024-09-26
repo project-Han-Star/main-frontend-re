@@ -1,6 +1,8 @@
+import { useNavigate } from "react-router";
 import Button from "../components/Button";
 
 const BoardPage = () => {
+  const navigate = useNavigate();
   return (
     <>
       <div className="w-full h-screen bg-[#4571e5] pt-64 flex flex-col items-center relative">
@@ -15,6 +17,7 @@ const BoardPage = () => {
                 회생했을까?
               </p>
               <Button
+                onClick={() => navigate("/possibility/start")}
                 className="w-[303px] h-[60px] absolute bottom-4 text-xl font-normal rounded-2xl"
                 secondary
               >
