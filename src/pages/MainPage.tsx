@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router";
-import Button from "../components/Button";
+import Button from "../components/Button/Button";
 
 const MainPage = () => {
   const navigate = useNavigate();

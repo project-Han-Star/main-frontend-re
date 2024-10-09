@@ -1,8 +1,8 @@
 import { useNavigate } from "react-router";
-import Button from "../../components/Button";
-import PossibilityButton from "../../components/PossibilityButton";
+import Button from "../../components/Button/Button";
+import PossibilityButton from "../../components/Button/PossibilityButton";
 import { ChangeEvent, useState } from "react";
-import Input from "../../components/Input";
+import Input from "../../components/Input/Input";
 
 const PossibilityChildren = () => {
   const navigate = useNavigate();

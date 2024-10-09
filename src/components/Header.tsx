@@ -4,7 +4,7 @@ import { memo } from "react";
 const Header = () => {
   const navigate = useNavigate();
   return (
-    <div className="flex items-center bg-primary h-[60px] z-[1000] absolute top-0 w-full">
+    <div className="flex items-center bg-primary h-[60px] z-10 absolute top-0 w-full">
       <div className="flex justify-between w-full mx-[300px]">
         <span
           className="text-[24px] text-white font-bold cursor-pointer"

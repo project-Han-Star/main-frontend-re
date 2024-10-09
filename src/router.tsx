@@ -11,7 +11,9 @@ import PossibilityParents from "./pages/Possibility/Parents";
 import PossibilityDisclaimer from "./pages/Possibility/Disclaimer";
 import PossibilityMonthlyRent from "./pages/Possibility/MonthlyRent";
 import PossibilityMonthlyIncome from "./pages/Possibility/MonthlyIncome";
-import PossibilityValues from "./pages/Possibility/Values";
+import PossibilityAssetValues from "./pages/Possibility/AssetValues";
+import PossibilityCreditor from "./pages/Possibility/Creditor";
+import WritePage from "./pages/WritePage";
 
 const Layout = () => {
   return (
@@ -31,6 +33,7 @@ const AppRouter = () => {
           <Route path="/login" element={<LoginPage />} />
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/board" element={<BoardPage />} />
+          <Route path="/write" element={<WritePage />} />
           <Route path="/possibility/*">
             <Route path="start" element={<PossibilityStart />} />
             <Route path="children" element={<PossibilityChildren />} />
@@ -42,7 +45,8 @@ const AppRouter = () => {
               path="monthlyincome"
               element={<PossibilityMonthlyIncome />}
             />
-            <Route path="values" element={<PossibilityValues />} />
+            <Route path="assetvalues" element={<PossibilityAssetValues />} />
+            <Route path="creditor" element={<PossibilityCreditor />} />
           </Route>
         </Route>
       </Routes>

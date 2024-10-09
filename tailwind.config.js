@@ -8,7 +8,7 @@ export const theme = {
       primary: "#4571e5",
       secondary: "#e7e9f5",
       fontgrey: "#353535",
-      fontlight: "#00000050",
+      fontlight: "#00000080",
     },
   },
 };

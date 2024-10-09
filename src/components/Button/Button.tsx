@@ -1,4 +1,4 @@
-import { ButtonHTMLAttributes, FC, memo, ReactNode } from "react";
+import { ButtonHTMLAttributes, forwardRef, memo, ReactNode } from "react";
 import { twMerge } from "tailwind-merge";
 
 interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {
@@ -7,14 +7,8 @@ interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {
   secondary?: boolean;
 }
 
-const Button: FC<Props> = ({
-  children,
-  className,
-  type = "button",
-  secondary,
-  onClick,
-}) => {
-  return (
+const Button = forwardRef<HTMLButtonElement, Props>(
+  ({ children, className, type = "button", secondary, ...props }, ref) => (
     <button
       type={type}
       className={twMerge(
@@ -25,11 +19,12 @@ const Button: FC<Props> = ({
         }`,
         className
       )}
-      onClick={onClick}
+      ref={ref}
+      {...props}
     >
       {children}
     </button>
-  );
-};
-
+  )
+);
+Button.displayName = "Button";
 export default memo(Button);

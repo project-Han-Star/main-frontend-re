@@ -1,11 +1,11 @@
 import { useNavigate } from "react-router";
-import Button from "../../components/Button";
+import Button from "../../components/Button/Button";
 import { ChangeEvent, useState } from "react";
-import Input from "../../components/Input";
+import useAssetValueModal from "../../lib/store/useAssetValueModal";
 
-const PossibilityValues = () => {
+const PossibilityAssetValues = () => {
   const navigate = useNavigate();
-
+  const { onOpen } = useAssetValueModal();
   const [value, setValue] = useState<string>("");
 
   const HandleChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -24,17 +24,27 @@ const PossibilityValues = () => {
             하는 돈이 있는 경우 그 금액만큼은 가치에서 빼고 계산해 주세요.
           </div>
 
-          <Input
-            type="text"
-            placeholder="금액을 입력해주세요."
-            className="mt-8 w-[404px] self-center"
-            onChange={HandleChange}
-            value={value}
-            required
-          />
+          <div className="flex mt-8 gap-x-2">
+            <input
+              type="text"
+              placeholder="금액을 입력해주세요."
+              className="text-2xl border-b border-black w-72 focus:outline-none"
+              onChange={HandleChange}
+              value={value}
+              required
+            />
+            <span className="text-2xl font-bold">원</span>
+          </div>
+
+          <button
+            onClick={onOpen}
+            className="px-8 py-4 mt-6 font-bold rounded-lg w-fit h-fit bg-secondary"
+          >
+            재산에는 어떤 것들이 들어가나요?
+          </button>
 
           <Button
-            onClick={() => navigate("../")}
+            onClick={() => navigate("../creditor")}
             className="w-[404px] text-sm self-center rounded-xl absolute bottom-20"
             secondary
           >
@@ -51,4 +61,4 @@ const PossibilityValues = () => {
   );
 };
 
-export default PossibilityValues;
+export default PossibilityAssetValues;

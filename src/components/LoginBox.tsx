@@ -1,8 +1,8 @@
 import { useNavigate } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
 import { FC } from "react";
-import Button from "./Button";
-import Input from "./Input";
+import Button from "./Button/Button";
+import Input from "./Input/Input";
 
 interface Props {
   email: string;

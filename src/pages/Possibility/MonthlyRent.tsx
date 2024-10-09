@@ -1,8 +1,8 @@
 import { useNavigate } from "react-router";
-import Button from "../../components/Button";
-import PossibilityButton from "../../components/PossibilityButton";
+import Button from "../../components/Button/Button";
+import PossibilityButton from "../../components/Button/PossibilityButton";
 import { ChangeEvent, useState } from "react";
-import Input from "../../components/Input";
+import PossibilityInput from "../../components/Input/PossibilityInput";
 
 const PossibilityMonthlyRent = () => {
   const navigate = useNavigate();
@@ -40,13 +40,13 @@ const PossibilityMonthlyRent = () => {
 
           {answer && (
             <>
-              <h2 className="mt-16 text-2xl font-bold">
+              <h2 className="mt-16 mb-8 text-2xl font-bold">
                 월세는 얼마나 내고 계신가요?
               </h2>
-              <Input
+              <PossibilityInput
                 type="text"
                 placeholder="금액을 입력해주세요."
-                className="mt-4 w-[404px] self-center"
+                className="self-center mt-4"
                 onChange={HandleChange}
                 value={value}
                 required

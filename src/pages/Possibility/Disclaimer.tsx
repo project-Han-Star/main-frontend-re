@@ -1,6 +1,6 @@
 import { useState } from "react";
-import PossibilityButton from "../../components/PossibilityButton";
-import Button from "../../components/Button";
+import PossibilityButton from "../../components/Button/PossibilityButton";
+import Button from "../../components/Button/Button";
 import { useNavigate } from "react-router";
 
 const PossibilityDisclaimer = () => {

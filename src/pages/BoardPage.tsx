@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router";
-import Button from "../components/Button";
+import Button from "../components/Button/Button";
 
 const BoardPage = () => {
   const navigate = useNavigate();
@@ -31,6 +31,7 @@ const BoardPage = () => {
                 변호사 추천받기
               </p>
               <Button
+                onClick={() => navigate("/write")}
                 className="w-[303px] h-[60px] absolute bottom-4 text-xl font-normal rounded-2xl"
                 secondary
               >
