@@ -1,4 +1,4 @@
-import LoginModal from "../components/modals/Loginmodal";
+import LoginBox from "../components/LoginBox";
 
 const LoginPage = () => {
   return (
@@ -8,7 +8,7 @@ const LoginPage = () => {
         <p className="text-xl text-white my-[10px]">
           한별 서비스의 모든것을 누려보세요
         </p>
-        <LoginModal email="" password="" />
+        <LoginBox email="" password="" />
       </div>
       <div className="w-full h-[25vh] bg-[#e7e9f5]"></div>
     </>

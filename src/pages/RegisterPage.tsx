@@ -1,4 +1,4 @@
-import RegisterModal from "../components/modals/Registermodal";
+import RegisterBox from "../components/RegisterBox";
 
 const RegisterPage = () => {
   return (
@@ -8,7 +8,7 @@ const RegisterPage = () => {
         <p className="text-xl text-white my-[10px]">
           한별 서비스의 모든것을 누려보세요
         </p>
-        <RegisterModal email="" password="" />
+        <RegisterBox email="" password="" />
       </div>
       <div className="w-full h-[25vh] bg-[#e7e9f5]"></div>
     </>

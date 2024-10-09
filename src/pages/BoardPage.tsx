@@ -5,7 +5,7 @@ const BoardPage = () => {
   const navigate = useNavigate();
   return (
     <>
-      <div className="w-full h-screen bg-[#4571e5] pt-64 flex flex-col items-center relative">
+      <div className="w-full h-[786px] bg-[#4571e5] pt-64 flex flex-col items-center relative">
         <div className="w-fit">
           <h1 className="text-white font-bold text-[40px]">
             한별에서 도움을 받으세요!
@@ -89,7 +89,7 @@ const BoardPage = () => {
           </div>
         </div>
       </div>
-      <div className="w-full h-screen flex flex-col items-center bg-[#4571e5]">
+      <div className="w-full h-[900px] flex flex-col items-center bg-[#4571e5]">
         <h1 className="text-center font-bold text-white text-5xl mt-24">
           그 외의 경우에도 <br />
           한별에서는 다 가능!

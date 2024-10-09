@@ -8,6 +8,10 @@ import PossibilityStart from "./pages/Possibility/Start";
 import PossibilityChildren from "./pages/Possibility/Children";
 import PossibilitySpouse from "./pages/Possibility/Spouse";
 import PossibilityParents from "./pages/Possibility/Parents";
+import PossibilityDisclaimer from "./pages/Possibility/Disclaimer";
+import PossibilityMonthlyRent from "./pages/Possibility/MonthlyRent";
+import PossibilityMonthlyIncome from "./pages/Possibility/MonthlyIncome";
+import PossibilityValues from "./pages/Possibility/Values";
 
 const Layout = () => {
   return (
@@ -32,6 +36,13 @@ const AppRouter = () => {
             <Route path="children" element={<PossibilityChildren />} />
             <Route path="spouse" element={<PossibilitySpouse />} />
             <Route path="parent" element={<PossibilityParents />} />
+            <Route path="disclaimer" element={<PossibilityDisclaimer />} />
+            <Route path="monthlyrent" element={<PossibilityMonthlyRent />} />
+            <Route
+              path="monthlyincome"
+              element={<PossibilityMonthlyIncome />}
+            />
+            <Route path="values" element={<PossibilityValues />} />
           </Route>
         </Route>
       </Routes>

@@ -1,15 +1,15 @@
 import { useNavigate } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
 import { FC } from "react";
-import Button from "../Button";
-import Input from "../Input";
+import Button from "./Button";
+import Input from "./Input";
 
 interface Props {
   email: string;
   password: string;
 }
 
-const LoginModal: FC<Props> = ({ email, password }) => {
+const LoginBox: FC<Props> = ({ email, password }) => {
   const navigate = useNavigate();
 
   return (
@@ -43,10 +43,10 @@ const LoginModal: FC<Props> = ({ email, password }) => {
       </div>
       <button className="flex items-center justify-center w-[400px] h-[50px] border border-black rounded-lg">
         <FcGoogle size={25} />
-        <span className="text-sm font-bold ml-3">구글로 로그인 하기</span>
+        <span className="ml-3 text-sm font-bold">구글로 로그인 하기</span>
       </button>
     </div>
   );
 };
 
-export default LoginModal;
+export default LoginBox;

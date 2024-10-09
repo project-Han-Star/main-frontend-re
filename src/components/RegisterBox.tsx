@@ -1,14 +1,14 @@
 import { FC } from "react";
 import { useNavigate } from "react-router-dom";
-import Button from "../Button";
-import Input from "../Input";
+import Button from "./Button";
+import Input from "./Input";
 
 interface Props {
   email: string;
   password: string;
 }
 
-const RegisterModal: FC<Props> = ({ email, password }) => {
+const RegisterBox: FC<Props> = ({ email, password }) => {
   const navigate = useNavigate();
   return (
     <div className="flex flex-col justify-center items-center gap-[20px] w-[600px] h-[650px] bg-white rounded-[10px] absolute top-[200px] shadow-[0_4px_30px_rgba(0,0,0,0.1)]">
@@ -55,4 +55,4 @@ const RegisterModal: FC<Props> = ({ email, password }) => {
   );
 };
 
-export default RegisterModal;
+export default RegisterBox;
