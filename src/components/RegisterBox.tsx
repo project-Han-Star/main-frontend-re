@@ -13,13 +13,13 @@ const RegisterBox: FC<Props> = ({ email, password }) => {
   return (
     <div className="flex flex-col justify-center items-center gap-[20px] w-[600px] h-[650px] bg-white rounded-[10px] absolute top-[200px] shadow-[0_4px_30px_rgba(0,0,0,0.1)]">
       <div className="flex flex-col w-[400px]">
-        <label className="text-[14px] text-[#353535] font-bold mb-1">
+        <label className="text-[14px] text-fontgrey font-bold mb-1">
           이메일
         </label>
         <Input placeholder="이메일을 입력해주세요." value={email} />
       </div>
       <div className="flex flex-col w-[400px]">
-        <label className="text-[14px] text-[#353535] font-bold mb-1">
+        <label className="text-[14px] text-fontgrey font-bold mb-1">
           비밀번호
         </label>
         <Input
@@ -29,7 +29,7 @@ const RegisterBox: FC<Props> = ({ email, password }) => {
         />
       </div>
       <div className="flex flex-col w-[400px]">
-        <label className="text-[14px] text-[#353535] font-bold mb-[5px]">
+        <label className="text-[14px] text-fontgrey font-bold mb-[5px]">
           비밀번호 확인
         </label>
         <Input
@@ -40,9 +40,9 @@ const RegisterBox: FC<Props> = ({ email, password }) => {
       </div>
       <Button className="w-[400px] rounded-lg">회원가입</Button>
       <div className="flex items-center gap-[10px]">
-        <div className="w-[180px] h-[1px] bg-[#353535]"></div>
-        <p className="text-[#353535]">OR</p>
-        <div className="w-[180px] h-[1px] bg-[#353535]"></div>
+        <div className="w-[180px] h-[1px] bg-fontgrey"></div>
+        <p className="text-fontgrey">OR</p>
+        <div className="w-[180px] h-[1px] bg-fontgrey"></div>
       </div>
       <Button
         className="w-[400px] rounded-lg"

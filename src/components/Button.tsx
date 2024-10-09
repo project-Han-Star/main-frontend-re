@@ -20,8 +20,8 @@ const Button: FC<Props> = ({
       className={twMerge(
         `w-[175px] h-[50px] rounded-[25px] border-2 font-bold ${
           !secondary
-            ? "bg-white text-[#4571e5] border-[#4571e5]"
-            : "bg-[#4571e5] text-white border-white"
+            ? "bg-white text-primary border-primary"
+            : "bg-primary text-white border-white"
         }`,
         className
       )}

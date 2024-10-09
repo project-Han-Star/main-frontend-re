@@ -13,7 +13,7 @@ const PossibilityMonthlyIncome = () => {
   };
   return (
     <>
-      <div className="flex flex-col items-center w-full h-[75vh] bg-[#4571e5] relative">
+      <div className="flex flex-col items-center w-full h-[75vh] bg-primary relative">
         <div className="flex flex-col px-20 w-[586px] h-[741px] bg-white rounded-3xl shadow-[0px_4px_30px_rgba(0,0,0,0.25)] relative top-1/4">
           <h1 className="mt-16 text-4xl font-bold">
             월 평균 수입은 얼마인가요?
@@ -45,7 +45,7 @@ const PossibilityMonthlyIncome = () => {
         </div>
       </div>
 
-      <div className="w-full h-[25vh] bg-[#e7e9f5]"></div>
+      <div className="w-full h-[25vh] bg-secondary"></div>
     </>
   );
 };
