@@ -1,15 +1,30 @@
 import { useNavigate } from "react-router";
 import Button from "../../components/Button/Button";
 import { ChangeEvent, useState } from "react";
-import useAssetValueModal from "../../lib/store/useAssetValueModal";
+import useAssetValueModalStore from "../../lib/store/useAssetValueModalStore";
+import PossibilityInput from "../../components/Input/PossibilityInput";
+import usePossibilityStore from "../../lib/store/usePossibilityStore";
+import toast from "react-hot-toast";
 
 const PossibilityAssetValues = () => {
   const navigate = useNavigate();
-  const { onOpen } = useAssetValueModal();
+  const { onOpen } = useAssetValueModalStore();
+  const { setAssetValue } = usePossibilityStore();
   const [value, setValue] = useState<string>("");
 
   const HandleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setValue(e.target.value);
+    const { value } = e.target;
+    if (/^\d*$/.test(value)) {
+      setValue(value);
+    }
+  };
+  const HandleClick = () => {
+    if (value === "") {
+      toast.error("missing Fields.");
+      return;
+    }
+    setAssetValue(Number(value));
+    navigate("../debtor");
   };
   return (
     <>
@@ -24,17 +39,13 @@ const PossibilityAssetValues = () => {
             하는 돈이 있는 경우 그 금액만큼은 가치에서 빼고 계산해 주세요.
           </div>
 
-          <div className="flex mt-8 gap-x-2">
-            <input
-              type="text"
-              placeholder="금액을 입력해주세요."
-              className="text-2xl border-b border-black w-72 focus:outline-none"
-              onChange={HandleChange}
-              value={value}
-              required
-            />
-            <span className="text-2xl font-bold">원</span>
-          </div>
+          <PossibilityInput
+            placeholder="금액을 입력해주세요."
+            className="text-2xl border-b border-black w-72 focus:outline-none"
+            onChange={HandleChange}
+            value={value}
+            required
+          />
 
           <button
             onClick={onOpen}
@@ -44,7 +55,7 @@ const PossibilityAssetValues = () => {
           </button>
 
           <Button
-            onClick={() => navigate("../creditor")}
+            onClick={HandleClick}
             className="w-[404px] text-sm self-center rounded-xl absolute bottom-20"
             secondary
           >

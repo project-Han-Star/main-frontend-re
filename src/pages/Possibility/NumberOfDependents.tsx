@@ -2,23 +2,41 @@ import { useNavigate } from "react-router";
 import Button from "../../components/Button/Button";
 import PossibilityButton from "../../components/Button/PossibilityButton";
 import { ChangeEvent, useState } from "react";
-import PossibilityInput from "../../components/Input/PossibilityInput";
+import Input from "../../components/Input/Input";
+import toast from "react-hot-toast";
+import usePossibilityStore from "../../lib/store/usePossibilityStore";
 
-const PossibilityMonthlyRent = () => {
+const PossibilityNumberOfDependents = () => {
   const navigate = useNavigate();
   const [answer, setAnswer] = useState<boolean | undefined>(undefined); // 미성년자 자녀 여부 (답변이 하나일 경우, answer 로 설정.)
   const [value, setValue] = useState<string>("");
+  const { setNumberOfDependents } = usePossibilityStore();
 
   const HandleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setValue(e.target.value);
+    const { value } = e.target;
+    if (/^\d*$/.test(value)) {
+      setValue(value);
+    }
   };
+
+  const HandleClick = () => {
+    if (answer === undefined || (answer && value === "")) {
+      toast.error("Missing Fields");
+      return;
+    } else if (answer === false) {
+      setNumberOfDependents(0);
+    } else {
+      setNumberOfDependents(Number(value));
+    }
+    navigate("../spouse");
+  };
+
   return (
     <>
       <div className="flex flex-col items-center w-full h-[75vh] bg-primary relative">
         <div className="flex flex-col px-20 w-[586px] h-[741px] bg-white rounded-3xl shadow-[0px_4px_30px_rgba(0,0,0,0.25)] relative top-1/4">
           <h1 className="mt-16 text-4xl font-bold">
-            현재 거주지에 월세를 <br />
-            내면서 살고 계신가요?
+            현재 가족을 부양하고 계신가요?
           </h1>
           <div className="flex mt-8 gap-x-4">
             <PossibilityButton
@@ -40,13 +58,13 @@ const PossibilityMonthlyRent = () => {
 
           {answer && (
             <>
-              <h2 className="mt-16 mb-8 text-2xl font-bold">
-                월세는 얼마나 내고 계신가요?
+              <h2 className="mt-16 text-2xl font-bold">
+                몇 명을 부양하고 계신가요?
               </h2>
-              <PossibilityInput
+              <Input
                 type="text"
-                placeholder="금액을 입력해주세요."
-                className="self-center mt-4"
+                placeholder="자녀 수를 입력해주세요."
+                className="mt-4 w-[404px] self-center"
                 onChange={HandleChange}
                 value={value}
                 required
@@ -55,13 +73,16 @@ const PossibilityMonthlyRent = () => {
           )}
 
           <Button
-            onClick={() => navigate("../monthlyincome")}
+            onClick={HandleClick}
             className="w-[404px] text-sm self-center rounded-xl absolute bottom-20"
             secondary
           >
             다음으로
           </Button>
-          <p className="absolute self-center text-sm font-bold bottom-10">
+          <p
+            onClick={() => {}}
+            className="absolute self-center text-sm font-bold bottom-10"
+          >
             뒤로가기
           </p>
         </div>
@@ -72,4 +93,4 @@ const PossibilityMonthlyRent = () => {
   );
 };
 
-export default PossibilityMonthlyRent;
+export default PossibilityNumberOfDependents;

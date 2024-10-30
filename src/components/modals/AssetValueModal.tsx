@@ -1,8 +1,8 @@
-import useAssetValueModal from "../../lib/store/useAssetValueModal";
+import useAssetValueModalStore from "../../lib/store/useAssetValueModalStore";
 import Modal from "./Modal";
 
 const AssetValueModal = () => {
-  const { isOpen, onClose } = useAssetValueModal();
+  const { isOpen, onClose } = useAssetValueModalStore();
   const onChange = (open: boolean) => {
     if (!open) {
       onClose();

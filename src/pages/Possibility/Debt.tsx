@@ -1,41 +1,52 @@
 import { useNavigate } from "react-router";
 import Button from "../../components/Button/Button";
 import { ChangeEvent, useState } from "react";
-import useCreditorModal from "../../lib/store/useCreditorModal";
-import Input from "../../components/Input/Input";
+import PossibilityInput from "../../components/Input/PossibilityInput";
+import usePossibilityStore from "../../lib/store/usePossibilityStore";
+import toast from "react-hot-toast";
 
-const PossibilityCreditor = () => {
+const PossibilityDebt = () => {
   const navigate = useNavigate();
-  const { onOpen } = useCreditorModal();
-  const [value, setValue] = useState<string>("");
+  const [value, setValue] = useState("");
+  const { setTotalDebt } = usePossibilityStore();
 
   const HandleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setValue(e.target.value);
+    const { value } = e.target;
+    if (/^\d*$/.test(value)) {
+      setValue(value);
+    }
   };
+
+  const HandleClick = () => {
+    if (value === "") {
+      toast.error("Missing Fields");
+      return;
+    }
+    setTotalDebt(Number(value));
+    navigate("../result");
+  };
+
   return (
     <>
       <div className="flex flex-col items-center w-full h-[75vh] bg-primary relative">
         <div className="flex flex-col px-20 w-[586px] h-[741px] bg-white rounded-3xl shadow-[0px_4px_30px_rgba(0,0,0,0.25)] relative top-1/4">
-          <h1 className="mt-16 text-[32px] font-bold">
-            채권자 수를 알려주세요.
+          <h1 className="my-16 text-[32px] font-bold">
+            모든 채무의
+            <br />
+            원금 합계를 알려주세요.
           </h1>
-          <button
-            onClick={onOpen}
-            className="px-8 py-4 mt-6 font-bold rounded-lg w-fit h-fit bg-secondary"
-          >
-            채권자란 무엇인가요?
-          </button>
-          <Input
+
+          <PossibilityInput
             type="text"
-            placeholder="채권자 수를 입력해주세요."
-            className="w-[404px] mt-8"
+            placeholder="금액을 입력해주세요."
+            className="text-2xl border-b border-black w-72 focus:outline-none"
             onChange={HandleChange}
             value={value}
             required
           />
 
           <Button
-            onClick={() => navigate("../")}
+            onClick={HandleClick}
             className="w-[404px] text-sm self-center rounded-xl absolute bottom-20"
             secondary
           >
@@ -52,4 +63,4 @@ const PossibilityCreditor = () => {
   );
 };
 
-export default PossibilityCreditor;
+export default PossibilityDebt;

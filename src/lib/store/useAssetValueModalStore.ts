@@ -6,10 +6,10 @@ interface ModalStore {
   onClose: () => void;
 }
 
-const useCreditorModal = create<ModalStore>((set) => ({
+const useAssetValueModalStore = create<ModalStore>((set) => ({
   isOpen: false,
   onOpen: () => set({ isOpen: true }),
   onClose: () => set({ isOpen: false }),
 }));
 
-export default useCreditorModal;
+export default useAssetValueModalStore;

@@ -5,15 +5,14 @@ import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
 import BoardPage from "./pages/BoardPage";
 import PossibilityStart from "./pages/Possibility/Start";
-import PossibilityChildren from "./pages/Possibility/Children";
 import PossibilitySpouse from "./pages/Possibility/Spouse";
-import PossibilityParents from "./pages/Possibility/Parents";
-import PossibilityDisclaimer from "./pages/Possibility/Disclaimer";
-import PossibilityMonthlyRent from "./pages/Possibility/MonthlyRent";
 import PossibilityMonthlyIncome from "./pages/Possibility/MonthlyIncome";
 import PossibilityAssetValues from "./pages/Possibility/AssetValues";
-import PossibilityCreditor from "./pages/Possibility/Creditor";
 import WritePage from "./pages/WritePage";
+import PossibilityDebt from "./pages/Possibility/Debt";
+import PossibilityResult from "./pages/Possibility/Result";
+import LawyerPage from "./pages/LawyerPage";
+import PossibilityNumberOfDependents from "./pages/Possibility/NumberOfDependents";
 
 const Layout = () => {
   return (
@@ -34,19 +33,21 @@ const AppRouter = () => {
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/board" element={<BoardPage />} />
           <Route path="/write" element={<WritePage />} />
+          <Route path="/lawyer" element={<LawyerPage />} />
           <Route path="/possibility/*">
             <Route path="start" element={<PossibilityStart />} />
-            <Route path="children" element={<PossibilityChildren />} />
+            <Route
+              path="children"
+              element={<PossibilityNumberOfDependents />}
+            />
             <Route path="spouse" element={<PossibilitySpouse />} />
-            <Route path="parent" element={<PossibilityParents />} />
-            <Route path="disclaimer" element={<PossibilityDisclaimer />} />
-            <Route path="monthlyrent" element={<PossibilityMonthlyRent />} />
             <Route
               path="monthlyincome"
               element={<PossibilityMonthlyIncome />}
             />
             <Route path="assetvalues" element={<PossibilityAssetValues />} />
-            <Route path="creditor" element={<PossibilityCreditor />} />
+            <Route path="debtor" element={<PossibilityDebt />} />
+            <Route path="result" element={<PossibilityResult />} />
           </Route>
         </Route>
       </Routes>

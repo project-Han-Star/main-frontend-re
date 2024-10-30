@@ -2,11 +2,25 @@ import { useState } from "react";
 import PossibilityButton from "../../components/Button/PossibilityButton";
 import Button from "../../components/Button/Button";
 import { useNavigate } from "react-router";
+import usePossibilityStore from "../../lib/store/usePossibilityStore";
+import toast from "react-hot-toast";
 
 const PossibilitySpouse = () => {
   const navigate = useNavigate();
   const [spouse, setSpouse] = useState<boolean | undefined>(undefined); // 배우자 여부
   const [spouseState, setSpouseState] = useState<string | undefined>(undefined); // 결혼 상태
+  const { setMaritalstatus } = usePossibilityStore();
+  const HandleClick = () => {
+    if (spouse === undefined || (spouse && spouseState === undefined)) {
+      toast.error("Missing Fields");
+      return;
+    } else if (spouse === false) {
+      setMaritalstatus("미혼");
+    } else if (spouse && spouseState) {
+      setMaritalstatus(spouseState);
+    }
+    navigate("../monthlyincome");
+  };
   return (
     <>
       <div className="flex flex-col items-center w-full h-[75vh] bg-primary relative">
@@ -65,7 +79,7 @@ const PossibilitySpouse = () => {
           )}
 
           <Button
-            onClick={() => navigate("../parent")}
+            onClick={HandleClick}
             className="w-[404px] text-sm self-center rounded-xl absolute bottom-20"
             secondary
           >
