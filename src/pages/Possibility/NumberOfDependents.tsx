@@ -21,7 +21,7 @@ const PossibilityNumberOfDependents = () => {
 
   const HandleClick = () => {
     if (answer === undefined || (answer && value === "")) {
-      toast.error("Missing Fields");
+      toast.error("답변 형식이 올바르지 않습니다.");
       return;
     } else if (answer === false) {
       setNumberOfDependents(0);
@@ -72,16 +72,18 @@ const PossibilityNumberOfDependents = () => {
             </>
           )}
 
+          <div className="flex-1"></div>
+
           <Button
             onClick={HandleClick}
-            className="w-[404px] text-sm self-center rounded-xl absolute bottom-20"
+            className="w-[404px] text-sm self-center rounded-xl mb-5"
             secondary
           >
             다음으로
           </Button>
           <p
-            onClick={() => {}}
-            className="absolute self-center text-sm font-bold bottom-10"
+            onClick={() => navigate(-1)}
+            className="self-center mb-10 text-sm font-bold cursor-pointer"
           >
             뒤로가기
           </p>

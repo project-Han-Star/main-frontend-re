@@ -12,7 +12,7 @@ const PossibilitySpouse = () => {
   const { setMaritalstatus } = usePossibilityStore();
   const HandleClick = () => {
     if (spouse === undefined || (spouse && spouseState === undefined)) {
-      toast.error("Missing Fields");
+      toast.error("답변 형식이 올바르지 않습니다.");
       return;
     } else if (spouse === false) {
       setMaritalstatus("미혼");
@@ -78,14 +78,19 @@ const PossibilitySpouse = () => {
             </>
           )}
 
+          <div className="flex-1"></div>
+
           <Button
             onClick={HandleClick}
-            className="w-[404px] text-sm self-center rounded-xl absolute bottom-20"
+            className="w-[404px] text-sm self-center rounded-xl mb-5"
             secondary
           >
             다음으로
           </Button>
-          <p className="absolute self-center text-sm font-bold bottom-10">
+          <p
+            onClick={() => navigate(-1)}
+            className="self-center mb-10 text-sm font-bold cursor-pointer"
+          >
             뒤로가기
           </p>
         </div>
