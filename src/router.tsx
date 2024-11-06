@@ -8,11 +8,13 @@ import PossibilityStart from "./pages/Possibility/Start";
 import PossibilitySpouse from "./pages/Possibility/Spouse";
 import PossibilityMonthlyIncome from "./pages/Possibility/MonthlyIncome";
 import PossibilityAssetValues from "./pages/Possibility/AssetValues";
-import WritePage from "./pages/WritePage";
+import WritePage from "./pages/Match/WritePage";
 import PossibilityDebt from "./pages/Possibility/Debt";
 import PossibilityResult from "./pages/Possibility/Result";
-import LawyerPage from "./pages/LawyerPage";
+import LawyerPage from "./pages/Match/LawyerPage";
 import PossibilityNumberOfDependents from "./pages/Possibility/NumberOfDependents";
+import LawyerChatPage from "./pages/Match/ChatPage";
+import ChooseRolePage from "./pages/ChooseRolePage";
 
 const Layout = () => {
   return (
@@ -29,11 +31,13 @@ const AppRouter = () => {
       <Routes>
         <Route element={<Layout />}>
           <Route path="/" element={<MainPage />} />
+          <Route path="/chooserole" element={<ChooseRolePage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/board" element={<BoardPage />} />
           <Route path="/write" element={<WritePage />} />
           <Route path="/lawyer" element={<LawyerPage />} />
+          <Route path="/lawyer/chat" element={<LawyerChatPage />} />
           <Route path="/possibility/*">
             <Route path="start" element={<PossibilityStart />} />
             <Route

@@ -1,6 +1,6 @@
 import { FaSearch } from "react-icons/fa";
-import { SAMPLE_LAWYERS } from "../constants";
-import Lawyer from "../components/Lawyer";
+import { SAMPLE_LAWYERS } from "../../constants";
+import Lawyer from "../../components/Lawyer";
 
 const LawyerPage = () => {
   const [best, ...others] = SAMPLE_LAWYERS;

@@ -10,7 +10,7 @@ const LoginPage = () => {
         </p>
         <LoginBox email="" password="" />
       </div>
-      <div className="w-full h-[25vh] bg-primary"></div>
+      <div className="w-full h-[25vh] bg-secondary"></div>
     </>
   );
 };

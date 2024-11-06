@@ -1,5 +1,5 @@
 import { ChangeEvent, useState } from "react";
-import Button from "../components/Button/Button";
+import Button from "../../components/Button/Button";
 import { useNavigate } from "react-router";
 
 const WritePage = () => {

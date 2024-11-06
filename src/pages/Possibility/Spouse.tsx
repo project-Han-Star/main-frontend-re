@@ -57,20 +57,20 @@ const PossibilitySpouse = () => {
               </h2>
               <div className="flex mt-4 gap-x-4">
                 <PossibilityButton
-                  onClick={() => setSpouseState("married")}
-                  activated={spouseState === "married"}
+                  onClick={() => setSpouseState("기혼")}
+                  activated={spouseState === "기혼"}
                 >
                   결혼
                 </PossibilityButton>
                 <PossibilityButton
-                  onClick={() => setSpouseState("brokenUp")}
-                  activated={spouseState === "brokenUp"}
+                  onClick={() => setSpouseState("이혼")}
+                  activated={spouseState === "이혼"}
                 >
                   이혼
                 </PossibilityButton>
                 <PossibilityButton
-                  onClick={() => setSpouseState("na")}
-                  activated={spouseState === "na"}
+                  onClick={() => setSpouseState("미혼")}
+                  activated={spouseState === "미혼"}
                 >
                   미혼
                 </PossibilityButton>

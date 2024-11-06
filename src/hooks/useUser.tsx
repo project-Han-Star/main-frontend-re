@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import api from "../lib/api/axiosConfig";
+import api from "../lib/api/nestClient";
 import { useEffect } from "react";
 
 export const useUser = () => {
