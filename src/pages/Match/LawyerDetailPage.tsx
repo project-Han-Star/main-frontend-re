@@ -1,13 +1,36 @@
 import { useNavigate, useParams } from "react-router";
+import nestClient from "../../lib/api/nestClient";
+import toast from "react-hot-toast";
+import { useEffect, useState } from "react";
 
 function LawyerDetailPage() {
   const { id } = useParams();
+  const [lawyer, setLawyer] = useState<any>(null);
   const navigate = useNavigate();
-  console.log(id);
+  useEffect(() => {
+    const fetchData = async () => {
+      const res = await nestClient.get(`/user/${id}`);
+      setLawyer(res.data);
+    };
+    fetchData();
+  }, []);
+
+  const HandleRequest = async () => {
+    const res = await nestClient.post("/match/send_request", {
+      lawyerId: id,
+    });
+    if (res.data) {
+      navigate("../success");
+      console.log(res.data);
+      return res.data;
+    }
+
+    toast.error("Something Went Wrong...");
+  };
   return (
     <div className="grid w-full h-screen bg-primary place-content-center">
       <div className="flex justify-center">
-        <div className="flex flex-col w-3/5 gap-5 p-10 bg-white rounded-2xl">
+        <div className="flex flex-col w-[900px] gap-5 p-10 bg-white rounded-2xl">
           <div className="flex items-center justify-between mb-5">
             <div className="flex flex-col gap-2">
               <h1 className="text-2xl font-semibold">이지민</h1>
@@ -36,7 +59,7 @@ function LawyerDetailPage() {
               뒤로가기
             </button>
             <button
-              onClick={() => navigate("../success")}
+              onClick={HandleRequest}
               className="w-full py-3 text-lg text-white transition-all transform rounded-full shadow-lg bg-primary hover:bg-blue-500 hover:scale-105 active:scale-95"
             >
               신청하기

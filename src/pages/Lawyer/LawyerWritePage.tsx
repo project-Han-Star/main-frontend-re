@@ -3,18 +3,23 @@ import Button from "../../components/Button/Button";
 import { useNavigate } from "react-router";
 import nestClient from "../../lib/api/nestClient";
 
-const WritePage = () => {
+const LawyerWritePage = () => {
   const navigate = useNavigate();
   const [value, setValue] = useState("");
   const onChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
     setValue(e.target.value);
+  };
+  const HandleSend = async () => {
+    const res = await nestClient.post("/user/write_bio");
+    navigate("/lawyer_result");
+    return res;
   };
   return (
     <div className="grid w-full h-screen bg-primary place-content-center">
       <form>
         <div className="flex flex-col items-center w-full px-16 py-8 h-fit bg-secondary rounded-3xl">
           <h1 className="text-3xl font-bold">
-            변호사님들과 매칭 할 수 있게 간단한 정보를 입력해주세요!
+            유저들을 도와줄 수 있게 간단한 정보를 입력해주세요!
           </h1>
           <textarea
             className="w-[700px] h-[400px] resize-none focus:outline-none mt-8 p-4 text-xl"
@@ -23,20 +28,17 @@ const WritePage = () => {
           />
           <div className="flex self-end mt-8 gap-x-8">
             <Button
-              onClick={() => navigate("/board")}
+              onClick={() =>
+                navigate(
+                  "/lawyer/applicant_detail/01e0b08c-98bf-460b-a887-bd24b6ff1cea"
+                )
+              }
               className="border-none"
               secondary
             >
               뒤로가기
             </Button>
-            <Button
-              onClick={() => {
-                nestClient.post("/user/write_bio");
-                navigate("/lawyer_result");
-              }}
-            >
-              사연 보내기
-            </Button>
+            <Button onClick={HandleSend}>사연 보내기</Button>
           </div>
         </div>
       </form>
@@ -44,4 +46,4 @@ const WritePage = () => {
   );
 };
 
-export default WritePage;
+export default LawyerWritePage;

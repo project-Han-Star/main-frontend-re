@@ -19,6 +19,7 @@ import ApplicantDetailPage from "./pages/Lawyer/ApplicantDetailPage";
 import LawyerDetailPage from "./pages/Match/LawyerDetailPage";
 import SuccessPage from "./pages/Match/SuccessPage";
 import RecoveryStatus from "./pages/Lawyer/RecoveryStatus";
+import LawyerWritePage from "./pages/Lawyer/LawyerWritePage";
 
 const Layout = () => {
   return (
@@ -50,7 +51,10 @@ const AppRouter = () => {
           </Route>
 
           <Route path="lawyer/*">
+            <Route path="write" element={<LawyerWritePage />} />
             <Route path="applicant_detail" element={<ApplicantDetailPage />} />
+            <Route path="recoverystatus" element={<RecoveryStatus />} />
+            <Route path="chat" element={<LawyerChatPage />} />
           </Route>
 
           <Route path="/possibility/*">

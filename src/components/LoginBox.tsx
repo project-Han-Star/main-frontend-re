@@ -3,6 +3,8 @@ import { FcGoogle } from "react-icons/fc";
 import { ChangeEvent, FC } from "react";
 import Button from "./Button/Button";
 import Input from "./Input/Input";
+import nestClient from "../lib/api/nestClient";
+import useRoleStore from "../lib/store/useRoleStore";
 
 interface Props {
   email: string;
@@ -18,6 +20,18 @@ const LoginBox: FC<Props> = ({
   HandlePassword,
 }) => {
   const navigate = useNavigate();
+  const { role } = useRoleStore();
+
+  const HandleLogin = async () => {
+    const formData = {
+      email,
+      password,
+      role,
+    };
+
+    const res = await nestClient.post("/auth/login", formData);
+    return res;
+  };
 
   return (
     <div className="flex flex-col justify-center items-center gap-5 w-[600px] h-[650px] bg-white rounded-lg absolute top-[200px] shadow-lg">
@@ -40,7 +54,7 @@ const LoginBox: FC<Props> = ({
       <p className="text-sm font-bold text-fontgrey">
         아이디를 잊어버리셨나요?
       </p>
-      <Button className=" w-[400px] rounded-lg" secondary>
+      <Button onClick={HandleLogin} className=" w-[400px] rounded-lg" secondary>
         로그인
       </Button>
       <Button

@@ -4,10 +4,13 @@ import RegisterBox from "../components/RegisterBox";
 const RegisterPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [confirm, setConfirm] = useState("");
   const HandleEmail = (e: ChangeEvent<HTMLInputElement>) =>
     setEmail(e.target.value);
   const HandlePassword = (e: ChangeEvent<HTMLInputElement>) =>
     setPassword(e.target.value);
+  const HandleConfirm = (e: ChangeEvent<HTMLInputElement>) =>
+    setConfirm(e.target.value);
   return (
     <>
       <div className="flex flex-col items-center bg-primary w-full h-[75vh] shadow-[0_4px_15px_rgba(0,0,0,0.1)]">
@@ -18,8 +21,10 @@ const RegisterPage = () => {
         <RegisterBox
           email={email}
           password={password}
+          confirm={confirm}
           HandleEmail={HandleEmail}
           HandlePassword={HandlePassword}
+          HandleConfirm={HandleConfirm}
         />
       </div>
       <div className="w-full h-[25vh] bg-secondary"></div>
