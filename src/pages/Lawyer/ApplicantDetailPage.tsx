@@ -1,6 +1,6 @@
 function ApplicantDetailPage() {
   return (
-    <div className="bg-blue-600">
+    <div className="grid w-full h-screen bg-primary place-content-center">
       <div className="flex justify-center">
         <div className="flex flex-col w-3/5 gap-5 p-10 bg-white rounded-2xl">
           <div className="flex items-center justify-between mb-5">
@@ -20,10 +20,10 @@ function ApplicantDetailPage() {
           </div>
 
           <div className="flex justify-between gap-5 mt-5">
-            <button className="w-full py-3 text-lg text-white transition-all transform bg-blue-600 rounded-full shadow-lg hover:bg-blue-500 hover:scale-105 active:scale-95">
+            <button className="w-full py-3 text-lg text-white transition-all transform rounded-full shadow-lg bg-primary hover:bg-blue-500 hover:scale-105 active:scale-95">
               채팅하기
             </button>
-            <button className="w-full py-3 text-lg text-white transition-all transform bg-blue-600 rounded-full shadow-lg hover:bg-blue-500 hover:scale-105 active:scale-95">
+            <button className="w-full py-3 text-lg text-white transition-all transform rounded-full shadow-lg bg-primary hover:bg-blue-500 hover:scale-105 active:scale-95">
               진척도 체크하기
             </button>
           </div>

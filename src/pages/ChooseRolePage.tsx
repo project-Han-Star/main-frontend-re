@@ -1,8 +1,21 @@
-import { useState } from "react";
 import Button from "../components/Button/Button";
+import { useNavigate } from "react-router";
+import useRoleStore from "../lib/store/useRoleStore";
 
 const ChooseRolePage = () => {
-  const [role, setRole] = useState<string | null>(null);
+  const navigate = useNavigate();
+  const { setRole } = useRoleStore();
+
+  const HandleApplicant = () => {
+    setRole("applicant");
+    navigate("/register");
+  };
+
+  const HandleLawyer = () => {
+    setRole("lawyer");
+    navigate("/register");
+  };
+
   return (
     <>
       <div className="w-full h-[75vh] bg-primary">
@@ -11,13 +24,13 @@ const ChooseRolePage = () => {
           <div className="flex mt-12 gap-x-16">
             <div className="flex flex-col items-center">
               <div className="bg-secondary w-[350px] h-[350px] mb-6"></div>
-              <Button className="w-64" secondary>
+              <Button onClick={HandleApplicant} className="w-64" secondary>
                 저는 개인 회생을 준비하고 있어요
               </Button>
             </div>
             <div className="flex flex-col items-center">
               <div className="bg-secondary w-[350px] h-[350px] mb-6"></div>
-              <Button className="w-64" secondary>
+              <Button onClick={HandleLawyer} className="w-64" secondary>
                 저는 변호사에요
               </Button>
             </div>

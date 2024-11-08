@@ -1,14 +1,21 @@
-import { FC } from "react";
+import { ChangeEvent, FC } from "react";
 import { useNavigate } from "react-router-dom";
 import Button from "./Button/Button";
 import Input from "./Input/Input";
 
 interface Props {
   email: string;
+  HandleEmail: (e: ChangeEvent<HTMLInputElement>) => void;
   password: string;
+  HandlePassword: (e: ChangeEvent<HTMLInputElement>) => void;
 }
 
-const RegisterBox: FC<Props> = ({ email, password }) => {
+const RegisterBox: FC<Props> = ({
+  email,
+  HandleEmail,
+  password,
+  HandlePassword,
+}) => {
   const navigate = useNavigate();
   return (
     <div className="flex flex-col justify-center items-center gap-[20px] w-[600px] h-[650px] bg-white rounded-[10px] absolute top-[200px] shadow-[0_4px_30px_rgba(0,0,0,0.1)]">
@@ -16,7 +23,11 @@ const RegisterBox: FC<Props> = ({ email, password }) => {
         <label className="text-[14px] text-fontgrey font-bold mb-1">
           이메일
         </label>
-        <Input placeholder="이메일을 입력해주세요." value={email} />
+        <Input
+          placeholder="이메일을 입력해주세요."
+          value={email}
+          onChange={HandleEmail}
+        />
       </div>
       <div className="flex flex-col w-[400px]">
         <label className="text-[14px] text-fontgrey font-bold mb-1">
@@ -26,6 +37,7 @@ const RegisterBox: FC<Props> = ({ email, password }) => {
           type="password"
           placeholder="비밀번호를 입력해주세요."
           value={password}
+          onChange={HandlePassword}
         />
       </div>
       <div className="flex flex-col w-[400px]">

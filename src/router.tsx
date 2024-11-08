@@ -40,6 +40,7 @@ const AppRouter = () => {
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/board" element={<BoardPage />} />
           <Route path="/write" element={<WritePage />} />
+
           <Route path="/lawyer_result/*">
             <Route path="" element={<LawyerPage />} />
             <Route path=":id" element={<LawyerDetailPage />} />
@@ -47,12 +48,11 @@ const AppRouter = () => {
             <Route path="chat" element={<LawyerChatPage />} />
             <Route path="recoverystatus" element={<RecoveryStatus />} />
           </Route>
+
           <Route path="lawyer/*">
-            <Route
-              path="applicant_detail/:id"
-              element={<ApplicantDetailPage />}
-            />
+            <Route path="applicant_detail" element={<ApplicantDetailPage />} />
           </Route>
+
           <Route path="/possibility/*">
             <Route path="start" element={<PossibilityStart />} />
             <Route
@@ -64,6 +64,7 @@ const AppRouter = () => {
               path="monthlyincome"
               element={<PossibilityMonthlyIncome />}
             />
+
             <Route path="assetvalues" element={<PossibilityAssetValues />} />
             <Route path="debtor" element={<PossibilityDebt />} />
             <Route path="result" element={<PossibilityResult />} />
