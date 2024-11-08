@@ -15,6 +15,10 @@ import LawyerPage from "./pages/Match/LawyerPage";
 import PossibilityNumberOfDependents from "./pages/Possibility/NumberOfDependents";
 import LawyerChatPage from "./pages/Match/ChatPage";
 import ChooseRolePage from "./pages/ChooseRolePage";
+import ApplicantDetailPage from "./pages/Lawyer/ApplicantDetailPage";
+import LawyerDetailPage from "./pages/Match/LawyerDetailPage";
+import SuccessPage from "./pages/Match/SuccessPage";
+import RecoveryStatus from "./pages/Lawyer/RecoveryStatus";
 
 const Layout = () => {
   return (
@@ -36,8 +40,19 @@ const AppRouter = () => {
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/board" element={<BoardPage />} />
           <Route path="/write" element={<WritePage />} />
-          <Route path="/lawyer" element={<LawyerPage />} />
-          <Route path="/lawyer/chat" element={<LawyerChatPage />} />
+          <Route path="/lawyer_result/*">
+            <Route path="" element={<LawyerPage />} />
+            <Route path=":id" element={<LawyerDetailPage />} />
+            <Route path="success" element={<SuccessPage />} />
+            <Route path="chat" element={<LawyerChatPage />} />
+            <Route path="recoverystatus" element={<RecoveryStatus />} />
+          </Route>
+          <Route path="lawyer/*">
+            <Route
+              path="applicant_detail/:id"
+              element={<ApplicantDetailPage />}
+            />
+          </Route>
           <Route path="/possibility/*">
             <Route path="start" element={<PossibilityStart />} />
             <Route

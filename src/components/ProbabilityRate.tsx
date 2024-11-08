@@ -1,4 +1,5 @@
 import { FC } from "react";
+import { FaRegSmile } from "react-icons/fa";
 
 interface Props {
   rate: number;
@@ -9,9 +10,7 @@ const ProbabilityRate: FC<Props> = ({ rate, message }) => {
   return (
     <div className="w-[560px] h-[800px] bg-secondary flex flex-col items-center py-4 rounded-xl">
       <div className="bg-white w-[540px] h-96 rounded-2xl flex flex-col justify-center items-center">
-        <div className="w-72 h-72 bg-secondary rounded-xl">
-          사진이 들어갈 자리
-        </div>
+        <FaRegSmile size={288} />
         <h3 className="mt-6 text-4xl font-bold">
           {rate >= 75
             ? "회생 가능성이 높아요!"
@@ -21,7 +20,7 @@ const ProbabilityRate: FC<Props> = ({ rate, message }) => {
         </h3>
       </div>
       <div className="h-12 bg-white w-[540px] rounded-xl mt-4 flex items-center px-6">
-        <p className="text-2xl font-bold">회생 가능성: {rate}</p>
+        <p className="text-2xl font-bold">회생 가능성: {rate}%</p>
       </div>
       <div className="bg-white w-[540px] flex-1 rounded-xl mt-4 p-4 text-xl">
         <p className="font-bold">{message}</p>

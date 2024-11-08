@@ -35,9 +35,11 @@ const LawyerChatPage = () => {
           <div className="w-full h-[75px] py-4 pr-4 border-4 mt-4 border-primary shadow-[0_4px_4px_0_rgba(0,0,0,0.1)] rounded-2xl flex items-center">
             <input className="flex-1 px-4 py-2 text-[17px] font-bold focus:outline-none" />
             <div
-              className="w-12 h-12 rounded-2xl bg-primary"
+              className="grid w-12 h-12 rounded-2xl bg-primary place-content-center"
               ref={sendRef}
-            ></div>
+            >
+              <p className="font-bold text-white">전송</p>
+            </div>
           </div>
         </div>
       </div>

@@ -31,7 +31,7 @@ const WritePage = () => {
             <Button
               onClick={() => {
                 // Todo: 변호사 매칭 api에 요청
-                navigate("/lawyer");
+                navigate("/lawyer_result");
               }}
             >
               사연 보내기
