@@ -1,13 +1,26 @@
 import { ChangeEvent, useState } from "react";
 import Button from "../../components/Button/Button";
 import { useNavigate } from "react-router";
-import nestClient from "../../lib/api/nestClient";
+import aiClient from "../../lib/api/aiClient";
 
 const WritePage = () => {
   const navigate = useNavigate();
-  const [value, setValue] = useState("");
+  const [value, setValue] = useState<string>("");
   const onChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
     setValue(e.target.value);
+  };
+  const onMatch = async () => {
+    const res = await aiClient.post("/ai/matching", {
+      sentence: value,
+    });
+
+    if (res.status === 200) {
+      navigate("/lawyer_result", {
+        state: {
+          data: res.data,
+        },
+      });
+    }
   };
   return (
     <div className="grid w-full h-screen bg-primary place-content-center">
@@ -29,14 +42,7 @@ const WritePage = () => {
             >
               뒤로가기
             </Button>
-            <Button
-              onClick={() => {
-                nestClient.post("/user/write_bio");
-                navigate("/lawyer_result");
-              }}
-            >
-              사연 보내기
-            </Button>
+            <Button onClick={onMatch}>사연 보내기</Button>
           </div>
         </div>
       </form>

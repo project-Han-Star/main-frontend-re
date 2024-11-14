@@ -13,70 +13,70 @@ import PossibilityDebt from "./pages/Possibility/Debt";
 import PossibilityResult from "./pages/Possibility/Result";
 import LawyerPage from "./pages/Match/LawyerPage";
 import PossibilityNumberOfDependents from "./pages/Possibility/NumberOfDependents";
-import LawyerChatPage from "./pages/Match/ChatPage";
+import LawyerChatPage from "./pages/ChatPage";
 import ChooseRolePage from "./pages/ChooseRolePage";
 import ApplicantDetailPage from "./pages/Lawyer/ApplicantDetailPage";
 import LawyerDetailPage from "./pages/Match/LawyerDetailPage";
 import SuccessPage from "./pages/Match/SuccessPage";
-import RecoveryStatus from "./pages/Lawyer/RecoveryStatus";
+import RecoveryStatus from "./pages/RecoveryStatus";
 import LawyerWritePage from "./pages/Lawyer/LawyerWritePage";
+import LawyerHome from "./pages/Lawyer/LawyerHome";
 
-const Layout = () => {
-  return (
-    <>
-      <Header />
-      <Outlet />
-    </>
-  );
-};
+const Layout = () => (
+  <>
+    <Header />
+    <Outlet />
+  </>
+);
 
-const AppRouter = () => {
-  return (
-    <BrowserRouter>
-      <Routes>
-        <Route element={<Layout />}>
-          <Route path="/" element={<MainPage />} />
-          <Route path="/chooserole" element={<ChooseRolePage />} />
-          <Route path="/login" element={<LoginPage />} />
-          <Route path="/register" element={<RegisterPage />} />
-          <Route path="/board" element={<BoardPage />} />
-          <Route path="/write" element={<WritePage />} />
+const AppRouter = () => (
+  <BrowserRouter>
+    <Routes>
+      <Route element={<Layout />}>
+        <Route path="/" element={<MainPage />} />
+        <Route path="/chooserole" element={<ChooseRolePage />} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/register" element={<RegisterPage />} />
+        <Route path="/board" element={<BoardPage />} />
+        <Route path="/write" element={<WritePage />} />
 
-          <Route path="/lawyer_result/*">
-            <Route path="" element={<LawyerPage />} />
-            <Route path=":id" element={<LawyerDetailPage />} />
-            <Route path="success" element={<SuccessPage />} />
-            <Route path="chat" element={<LawyerChatPage />} />
-            <Route path="recoverystatus" element={<RecoveryStatus />} />
-          </Route>
-
-          <Route path="lawyer/*">
-            <Route path="write" element={<LawyerWritePage />} />
-            <Route path="applicant_detail" element={<ApplicantDetailPage />} />
-            <Route path="recoverystatus" element={<RecoveryStatus />} />
-            <Route path="chat" element={<LawyerChatPage />} />
-          </Route>
-
-          <Route path="/possibility/*">
-            <Route path="start" element={<PossibilityStart />} />
-            <Route
-              path="children"
-              element={<PossibilityNumberOfDependents />}
-            />
-            <Route path="spouse" element={<PossibilitySpouse />} />
-            <Route
-              path="monthlyincome"
-              element={<PossibilityMonthlyIncome />}
-            />
-
-            <Route path="assetvalues" element={<PossibilityAssetValues />} />
-            <Route path="debtor" element={<PossibilityDebt />} />
-            <Route path="result" element={<PossibilityResult />} />
-          </Route>
+        <Route path="/lawyer_result/*">
+          <Route path="" element={<LawyerPage />} />
+          <Route path=":id" element={<LawyerDetailPage />} />
+          <Route path="success" element={<SuccessPage />} />
+          <Route path="chat" element={<LawyerChatPage />} />
+          <Route path="recoverystatus" element={<RecoveryStatus />} />
         </Route>
-      </Routes>
-    </BrowserRouter>
-  );
-};
+
+        <Route path="/lawyer/*">
+          <Route path="" element={<LawyerHome />} />
+          <Route path="write" element={<LawyerWritePage />} />
+          <Route
+            path="applicant_detail/:id"
+            element={<ApplicantDetailPage />}
+          />
+          <Route
+            path="applicant_detail/:id/recoverystatus"
+            element={<RecoveryStatus />}
+          />
+          <Route
+            path="applicant_detail/:id/chat"
+            element={<LawyerChatPage />}
+          />
+        </Route>
+
+        <Route path="/possibility/*">
+          <Route path="start" element={<PossibilityStart />} />
+          <Route path="children" element={<PossibilityNumberOfDependents />} />
+          <Route path="spouse" element={<PossibilitySpouse />} />
+          <Route path="monthlyincome" element={<PossibilityMonthlyIncome />} />
+          <Route path="assetvalues" element={<PossibilityAssetValues />} />
+          <Route path="debtor" element={<PossibilityDebt />} />
+          <Route path="result" element={<PossibilityResult />} />
+        </Route>
+      </Route>
+    </Routes>
+  </BrowserRouter>
+);
 
 export default AppRouter;

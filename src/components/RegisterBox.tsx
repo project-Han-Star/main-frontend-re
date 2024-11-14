@@ -24,7 +24,7 @@ const RegisterBox: FC<Props> = ({
   HandleConfirm,
 }) => {
   const navigate = useNavigate();
-  const { role } = useRoleStore();
+  const { role, setRole } = useRoleStore();
 
   const HandleRegister = async () => {
     if (email === "" || password === "" || confirm === "") {
@@ -36,7 +36,10 @@ const RegisterBox: FC<Props> = ({
       return;
     }
     const formData = {
-      username: `newUser_${Math.floor(Math.random() * 10000)}`,
+      username:
+        role === "applicant"
+          ? `newUser_${Math.floor(Math.random() * 10000)}`
+          : `lawyer_${Math.floor(Math.random() * 10000)}`,
       email,
       password,
       role,
@@ -44,7 +47,10 @@ const RegisterBox: FC<Props> = ({
     const res = await nestClient.post("/auth/register", formData);
     if (role === "applicant") navigate("/");
     else if (role === "lawyer") navigate("/lawyer");
+    setRole(null);
     console.log(res.data);
+    localStorage.setItem("access_token", res.data.access_token);
+    window.location.reload();
     return res.data;
   };
   return (

@@ -1,9 +1,20 @@
-import { useEffect, useRef } from "react";
-import Message from "../../components/Message";
-import { SAMPLE_MESSAGES } from "../../constants";
+import { useEffect, useRef, useState } from "react";
+import Message from "../components/Message";
+import { SAMPLE_MESSAGES } from "../constants";
+import { useParams } from "react-router";
+import nestClient from "../lib/api/nestClient";
+import { LawyerType } from "../types";
 
 const LawyerChatPage = () => {
+  const { id } = useParams();
+  const [lawyer, setLawyer] = useState<LawyerType | null>(null);
+  const [message, setMessage] = useState<string>("");
   const sendRef = useRef<HTMLDivElement>(null);
+
+  const SendMessage = async () => {
+    const res = await nestClient.post("/chat");
+  };
+
   useEffect(() => {
     const onEnter = (e: KeyboardEvent) => {
       if (e.key === "Enter") {
@@ -16,12 +27,22 @@ const LawyerChatPage = () => {
       window.removeEventListener("keydown", onEnter);
     };
   }, []);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const res = await nestClient.get(`/user/${id}`);
+      setLawyer(res.data);
+      const match = await nestClient.get("match");
+    };
+    fetchData();
+  }, [id]);
+
   return (
     <>
       <div className="w-full h-[75vh] bg-primary">
         <div className="w-[550px] h-[800px] rounded-3xl p-[30px] bg-white absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
           <div className="grid w-full h-16 text-xl font-bold place-content-center rounded-2xl bg-[#efefef]">
-            이지민 님과 대화중..
+            {lawyer?.username} 님과 대화중..
           </div>
           <div className="flex flex-col mt-12 h-[540px] overflow-y-scroll gap-y-4 scrollbar-hide">
             {SAMPLE_MESSAGES.map((message) => (

@@ -1,5 +1,8 @@
 import { useNavigate } from "react-router";
 import Button from "../components/Button/Button";
+import Board1 from "../assets/board1.png";
+import Board2 from "../assets/board2.png";
+import Board3 from "../assets/board3.png";
 
 const BoardPage = () => {
   const navigate = useNavigate();
@@ -58,9 +61,7 @@ const BoardPage = () => {
       </div>
       <div className="flex flex-col items-center w-full py-24 h-fit bg-secondary gap-y-8">
         <div className="flex items-center gap-x-16">
-          <div className="w-[454px] h-[363px] bg-white grid place-content-center">
-            사진이 들어갈 자리
-          </div>
+          <img src={Board1} />
           <div className="flex flex-col">
             <h1 className="text-[40px] font-bold text-right">
               주식/코인 빛 회생 가능
@@ -85,9 +86,7 @@ const BoardPage = () => {
               posuere purus gravida. Mauris ac nunc q
             </p>
           </div>
-          <div className="w-[477px] h-[351px] bg-white grid place-content-center">
-            사진이 들어갈 자리
-          </div>
+          <img src={Board2} />
         </div>
       </div>
       <div className="w-full h-[900px] flex flex-col items-center bg-primary">
@@ -104,9 +103,7 @@ const BoardPage = () => {
         <h2 className="font-bold text-white text-[40px] mt-32 relative right-72">
           현재 한별에 등록중인 변호사
         </h2>
-        <div className="w-[798px] h-[225px] bg-white rounded-[20px] mt-12 grid place-content-center">
-          사진이 들어갈 자리
-        </div>
+        <img src={Board3} className="mt-12" />
       </div>
     </>
   );

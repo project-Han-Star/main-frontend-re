@@ -1,19 +1,27 @@
 import { ChangeEvent, useState } from "react";
 import Button from "../../components/Button/Button";
 import { useNavigate } from "react-router";
-import nestClient from "../../lib/api/nestClient";
+import aiClient from "../../lib/api/aiClient";
+import { useUser } from "../../hooks/useUser";
 
 const LawyerWritePage = () => {
   const navigate = useNavigate();
   const [value, setValue] = useState("");
+  const { user } = useUser();
+
   const onChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
     setValue(e.target.value);
   };
   const HandleSend = async () => {
-    const res = await nestClient.post("/user/write_bio");
-    navigate("/lawyer_result");
+    const res = await aiClient.post("/ai/vec", {
+      user_id: user.userId,
+      sentence: value,
+    });
+    console.log(res);
+    navigate("/lawyer");
     return res;
   };
+
   return (
     <div className="grid w-full h-screen bg-primary place-content-center">
       <form>

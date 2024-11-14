@@ -2,10 +2,11 @@ import { useNavigate, useParams } from "react-router";
 import nestClient from "../../lib/api/nestClient";
 import toast from "react-hot-toast";
 import { useEffect, useState } from "react";
+import { LawyerType } from "../../types";
 
 function LawyerDetailPage() {
   const { id } = useParams();
-  const [lawyer, setLawyer] = useState<any>(null);
+  const [lawyer, setLawyer] = useState<LawyerType | null>(null);
   const navigate = useNavigate();
   useEffect(() => {
     const fetchData = async () => {
@@ -13,7 +14,7 @@ function LawyerDetailPage() {
       setLawyer(res.data);
     };
     fetchData();
-  }, []);
+  }, [id]);
 
   const HandleRequest = async () => {
     const res = await nestClient.post("/match/send_request", {
@@ -33,9 +34,8 @@ function LawyerDetailPage() {
         <div className="flex flex-col w-[900px] gap-5 p-10 bg-white rounded-2xl">
           <div className="flex items-center justify-between mb-5">
             <div className="flex flex-col gap-2">
-              <h1 className="text-2xl font-semibold">이지민</h1>
+              <h1 className="text-2xl font-semibold">{lawyer?.username}</h1>
               <p className="font-bold">파산 전문 변호사</p>
-              <p>지금은 7명을 도와주고 있어요</p>
             </div>
             <img
               src="images/profile.png"
@@ -45,10 +45,7 @@ function LawyerDetailPage() {
           </div>
 
           <div className="p-6 mt-4 bg-gray-200 border-2 border-gray-300 rounded-lg">
-            <p>
-              저희는 개인 회생 및 파산 전문 변호사로서 채무 문제로 인해 어려움을
-              겪고 계신 분들에게 법적으로 인정받는 해결책을 제공하고 있습니다.
-            </p>
+            <p>{lawyer?.description}</p>
           </div>
 
           <div className="flex justify-between gap-5 mt-5">

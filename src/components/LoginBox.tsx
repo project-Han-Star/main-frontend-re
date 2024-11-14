@@ -30,6 +30,10 @@ const LoginBox: FC<Props> = ({
     };
 
     const res = await nestClient.post("/auth/login", formData);
+    console.log(res.data);
+    localStorage.setItem("access_token", res.data.access_token);
+    navigate("/");
+    window.location.reload();
     return res;
   };
 
@@ -46,6 +50,7 @@ const LoginBox: FC<Props> = ({
       <div className="flex flex-col w-[400px]">
         <label className="mb-1 text-sm font-bold text-fontgrey">비밀번호</label>
         <Input
+          type="password"
           placeholder="비밀번호를 입력해주세요."
           value={password}
           onChange={HandlePassword}
