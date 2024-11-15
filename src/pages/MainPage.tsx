@@ -4,10 +4,14 @@ import { useUser } from "../hooks/useUser";
 import Main1 from "../assets/main1.png";
 import Main2 from "../assets/main2.png";
 import Main3 from "../assets/main3.png";
+import nestClient from "../lib/api/nestClient";
+import toast from "react-hot-toast";
+import { useEffect } from "react";
 
 const MainPage = () => {
   const navigate = useNavigate();
   const { user, isLoading } = useUser();
+
   const checkLogIn = () => {
     if (!user && !isLoading) {
       navigate("/login");
@@ -16,6 +20,28 @@ const MainPage = () => {
       navigate("/board");
     }
   };
+
+  useEffect(() => {
+    if (!isLoading && user && user.role === "applicant") {
+      const checkLawyer = async () => {
+        const res = await nestClient
+          .get("/match/check_matched_lawyer")
+          .then((r) => r.data);
+        console.log(res);
+        if (res) {
+          toast("매칭된 변호사가 존재하여 변호사 페이지로 이동합니다.");
+
+          navigate(`/lawyer_result/${res.lawyer.id}`, {
+            state: {
+              isAccepted: res.status !== "not accepted now" ? true : false,
+            },
+          });
+        }
+      };
+      checkLawyer();
+    }
+  }, [isLoading, user]);
+
   return (
     <div className="bg-secondary">
       <div className="flex h-screen bg-primary justify-center items-center gap-[60px] shadow-[0_4px_30px_0_rgba(0,0,0,0.2)]">

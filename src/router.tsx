@@ -13,7 +13,7 @@ import PossibilityDebt from "./pages/Possibility/Debt";
 import PossibilityResult from "./pages/Possibility/Result";
 import LawyerPage from "./pages/Match/LawyerPage";
 import PossibilityNumberOfDependents from "./pages/Possibility/NumberOfDependents";
-import LawyerChatPage from "./pages/ChatPage";
+import ChatPage from "./pages/ChatPage";
 import ChooseRolePage from "./pages/ChooseRolePage";
 import ApplicantDetailPage from "./pages/Lawyer/ApplicantDetailPage";
 import LawyerDetailPage from "./pages/Match/LawyerDetailPage";
@@ -44,8 +44,8 @@ const AppRouter = () => (
           <Route path="" element={<LawyerPage />} />
           <Route path=":id" element={<LawyerDetailPage />} />
           <Route path="success" element={<SuccessPage />} />
-          <Route path="chat" element={<LawyerChatPage />} />
-          <Route path="recoverystatus" element={<RecoveryStatus />} />
+          <Route path=":id/chat" element={<ChatPage />} />
+          <Route path=":id/recoverystatus" element={<RecoveryStatus />} />
         </Route>
 
         <Route path="/lawyer/*">
@@ -59,10 +59,7 @@ const AppRouter = () => (
             path="applicant_detail/:id/recoverystatus"
             element={<RecoveryStatus />}
           />
-          <Route
-            path="applicant_detail/:id/chat"
-            element={<LawyerChatPage />}
-          />
+          <Route path="applicant_detail/:id/chat" element={<ChatPage />} />
         </Route>
 
         <Route path="/possibility/*">

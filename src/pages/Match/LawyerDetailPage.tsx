@@ -1,11 +1,14 @@
-import { useNavigate, useParams } from "react-router";
+import { useLocation, useNavigate, useParams } from "react-router";
 import nestClient from "../../lib/api/nestClient";
 import toast from "react-hot-toast";
+import HumanPhoto from "../../assets/HumanPhoto.png";
 import { useEffect, useState } from "react";
 import { LawyerType } from "../../types";
 
 function LawyerDetailPage() {
   const { id } = useParams();
+  const location = useLocation();
+  const isAccepted: boolean | null = location.state?.isAccepted;
   const [lawyer, setLawyer] = useState<LawyerType | null>(null);
   const navigate = useNavigate();
   useEffect(() => {
@@ -35,12 +38,12 @@ function LawyerDetailPage() {
           <div className="flex items-center justify-between mb-5">
             <div className="flex flex-col gap-2">
               <h1 className="text-2xl font-semibold">{lawyer?.username}</h1>
-              <p className="font-bold">파산 전문 변호사</p>
+              <p className="font-bold">{lawyer?.email}</p>
             </div>
             <img
-              src="images/profile.png"
+              src={HumanPhoto}
               alt="profile"
-              className="w-24 h-24 rounded-full"
+              className="w-32 h-auto rounded-full"
             />
           </div>
 
@@ -49,18 +52,50 @@ function LawyerDetailPage() {
           </div>
 
           <div className="flex justify-between gap-5 mt-5">
-            <button
-              onClick={() => navigate(-1)}
-              className="w-full py-3 text-lg text-white transition-all transform rounded-full shadow-lg bg-primary hover:bg-blue-500 hover:scale-105 active:scale-95"
-            >
-              뒤로가기
-            </button>
-            <button
-              onClick={HandleRequest}
-              className="w-full py-3 text-lg text-white transition-all transform rounded-full shadow-lg bg-primary hover:bg-blue-500 hover:scale-105 active:scale-95"
-            >
-              신청하기
-            </button>
+            {isAccepted === null || isAccepted === undefined ? (
+              <>
+                <button
+                  onClick={() => navigate(-1)}
+                  className="w-full py-3 text-lg text-white transition-all transform rounded-full shadow-lg bg-primary hover:bg-blue-500 hover:scale-105 active:scale-95"
+                >
+                  뒤로가기
+                </button>
+                <button
+                  onClick={HandleRequest}
+                  className="w-full py-3 text-lg text-white transition-all transform rounded-full shadow-lg bg-primary hover:bg-blue-500 hover:scale-105 active:scale-95"
+                >
+                  신청하기
+                </button>
+              </>
+            ) : isAccepted === false ? (
+              <button
+                onClick={() => navigate("/")}
+                className="w-full py-3 text-lg text-white transition-all transform rounded-full shadow-lg bg-primary hover:bg-blue-500 hover:scale-105 active:scale-95"
+              >
+                변호사의 승인을 대기 중입니다.
+              </button>
+            ) : (
+              <>
+                <button
+                  onClick={() => navigate("./chat")}
+                  className="w-full py-3 text-lg text-white transition-all transform rounded-full shadow-lg bg-primary hover:bg-blue-500 hover:scale-105 active:scale-95"
+                >
+                  채팅하기
+                </button>
+                <button
+                  onClick={() =>
+                    navigate("./recoverystatus", {
+                      state: {
+                        isLawyer: false,
+                      },
+                    })
+                  }
+                  className="w-full py-3 text-lg text-white transition-all transform rounded-full shadow-lg bg-primary hover:bg-blue-500 hover:scale-105 active:scale-95"
+                >
+                  진척도 확인하기
+                </button>
+              </>
+            )}
           </div>
         </div>
       </div>

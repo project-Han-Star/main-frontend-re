@@ -1,10 +1,11 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Progress1 from "../assets/progress1.png";
 import Progress2 from "../assets/progress2.png";
 import Progress3 from "../assets/progress3.png";
 import Progress4 from "../assets/progress4.png";
-import { useNavigate, useParams } from "react-router";
+import { useLocation, useNavigate, useParams } from "react-router";
 import nestClient from "../lib/api/nestClient";
+import toast from "react-hot-toast";
 
 type Status =
   | ""
@@ -16,6 +17,8 @@ type Status =
 
 function RecoveryStatus() {
   const { id } = useParams();
+  const location = useLocation();
+  const { isLawyer } = location.state;
   const navigate = useNavigate();
   const [status, setStatus] = useState<Status>("");
 
@@ -28,14 +31,26 @@ function RecoveryStatus() {
       status,
     });
     if (res.data) {
+      toast.success("변경사항을 저장했습니다!");
       navigate(-1);
     }
   };
 
+  useEffect(() => {
+    const fetchData = async () => {
+      const res = await nestClient.get(`match/${id}`);
+      if (res.status >= 200 && res.status < 300) {
+        setStatus(res.data.status);
+      }
+    };
+    fetchData();
+  }, [id]);
+
   return (
     <div className="grid w-full h-screen bg-primary place-content-center">
       <div className="w-[1200px] p-10 text-center bg-white  rounded-2xl">
-        <h1 className="text-2xl font-bold">나의 회생 상황</h1>
+        <h2 className="text-2xl font-bold">나의 회생 상황</h2>
+        <h1 className="text-4xl font-bold">{status}</h1>
 
         <div className="flex flex-col mt-6">
           <ul className="flex justify-around mt-4 text-lg font-bold">
@@ -91,12 +106,22 @@ function RecoveryStatus() {
           </div>
         </div>
 
-        <button
-          onClick={() => navigate(-1)}
-          className="px-8 py-3 mt-6 text-lg text-white transition-all transform rounded-full shadow-lg bg-primary hover:bg-blue-500 hover:scale-105 active:scale-95"
-        >
-          뒤로가기
-        </button>
+        <div className="flex justify-center mt-8 gap-x-12">
+          {isLawyer && (
+            <button
+              onClick={HandleSave}
+              className="px-8 py-3 mt-6 text-lg text-white transition-all transform rounded-full shadow-lg bg-primary hover:bg-blue-500 hover:scale-105 active:scale-95"
+            >
+              변경사항 저장
+            </button>
+          )}
+          <button
+            onClick={() => navigate(-1)}
+            className="px-8 py-3 mt-6 text-lg text-white transition-all transform rounded-full shadow-lg bg-primary hover:bg-blue-500 hover:scale-105 active:scale-95"
+          >
+            뒤로가기
+          </button>
+        </div>
       </div>
     </div>
   );

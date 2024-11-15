@@ -68,7 +68,13 @@ function ApplicantDetailPage() {
               채팅하기
             </button>
             <button
-              onClick={() => navigate("./recoverystatus")}
+              onClick={() =>
+                navigate("./recoverystatus", {
+                  state: {
+                    isLawyer: true,
+                  },
+                })
+              }
               className="w-full py-3 text-lg text-white transition-all transform rounded-full shadow-lg bg-primary hover:bg-blue-500 hover:scale-105 active:scale-95"
             >
               진척도 체크하기

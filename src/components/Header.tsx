@@ -28,7 +28,7 @@ const Header = () => {
             className="font-bold text-white cursor-pointer"
             onClick={checkLogin}
           >
-            {user ? user.username : "로그인"}
+            {user ? `${user.username}님` : "로그인"}
           </span>
           <span onClick={logout} className="font-bold text-white">
             {user ? "로그아웃" : "도움말"}

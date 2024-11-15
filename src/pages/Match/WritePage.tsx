@@ -6,9 +6,13 @@ import aiClient from "../../lib/api/aiClient";
 const WritePage = () => {
   const navigate = useNavigate();
   const [value, setValue] = useState<string>("");
+
+  console.log(value);
+
   const onChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
     setValue(e.target.value);
   };
+
   const onMatch = async () => {
     const res = await aiClient.post("/ai/matching", {
       sentence: value,
@@ -22,6 +26,7 @@ const WritePage = () => {
       });
     }
   };
+
   return (
     <div className="grid w-full h-screen bg-primary place-content-center">
       <form>
