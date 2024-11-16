@@ -19,6 +19,7 @@ const WritePage = () => {
     });
 
     if (res.status === 200) {
+      console.log(res.data);
       navigate("/lawyer_result", {
         state: {
           data: res.data,

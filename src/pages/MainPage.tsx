@@ -55,7 +55,7 @@ const MainPage = () => {
             BNPL 서비스와 AI 데이터 기반으로 통합 솔루션 제공
           </p>
           <div className="flex gap-[20px]">
-            <Button onClick={() => navigate("/lawyer")}>신청하기</Button>
+            <Button onClick={() => navigate("/lawyer")}>시작하기</Button>
             <Button onClick={checkLogIn} secondary>
               신청하기
             </Button>

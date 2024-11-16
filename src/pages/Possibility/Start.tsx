@@ -1,6 +1,7 @@
 import { memo } from "react";
 import Button from "../../components/Button/Button";
 import { useNavigate } from "react-router";
+import Robot from "../../assets/robot.svg";
 
 const PossibilityStart = () => {
   const navigate = useNavigate();
@@ -12,9 +13,10 @@ const PossibilityStart = () => {
             AI가 나의 회생 가능성을 <br />
             예측해 줄 거에요!
           </h1>
-          <div className="w-[310px] h-[345px] mt-8 bg-slate-200 self-center grid place-content-center">
-            사진이 들어갈 자리
-          </div>
+          <img
+            src={Robot}
+            className="w-[300px] h-[300px] self-center relative top-16"
+          />
           <Button
             onClick={() => navigate("../children")}
             className="w-[404px] text-sm self-center rounded-xl absolute bottom-20"

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import Progress1 from "../assets/progress1.png";
 import Progress2 from "../assets/progress2.png";
 import Progress3 from "../assets/progress3.png";
@@ -14,6 +14,19 @@ type Status =
   | "correction response"
   | "creditor meeting"
   | "repayment plan approval";
+
+const StatusToKorean: FC<{ status: string }> = ({ status }) => {
+  switch (status) {
+    case "document submission":
+      return <h1 className="mt-4 text-4xl font-bold">필요서류 제출</h1>;
+    case "correction response":
+      return <h1 className="mt-4 text-4xl font-bold">보정권고 대응</h1>;
+    case "creditor meeting":
+      return <h1 className="mt-4 text-4xl font-bold">채권자 집회</h1>;
+    case "repayment plan approval":
+      return <h1 className="mt-4 text-4xl font-bold">변제계획 인가</h1>;
+  }
+};
 
 function RecoveryStatus() {
   const { id } = useParams();
@@ -50,7 +63,7 @@ function RecoveryStatus() {
     <div className="grid w-full h-screen bg-primary place-content-center">
       <div className="w-[1200px] p-10 text-center bg-white  rounded-2xl">
         <h2 className="text-2xl font-bold">나의 회생 상황</h2>
-        <h1 className="text-4xl font-bold">{status}</h1>
+        <StatusToKorean status={status} />
 
         <div className="flex flex-col mt-6">
           <ul className="flex justify-around mt-4 text-lg font-bold">

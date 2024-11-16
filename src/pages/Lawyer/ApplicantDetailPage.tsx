@@ -24,12 +24,14 @@ function ApplicantDetailPage() {
       status: "document submission",
     });
     toast.success("성공적으로 수락했습니다!");
+    navigate(-1);
     console.log(res.data);
   };
 
   const HandleReject = async () => {
     const res = await nestClient.delete(`match/reject_request/${id}`);
     toast.success("성공적으로 거절했습니다!");
+    navigate(-1);
     console.log(res.data);
   };
 

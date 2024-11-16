@@ -1,4 +1,4 @@
-import { BrowserRouter, Outlet, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Outlet, Route, Router, Routes } from "react-router-dom";
 import Header from "./components/Header";
 import MainPage from "./pages/MainPage";
 import LoginPage from "./pages/LoginPage";
@@ -21,6 +21,7 @@ import SuccessPage from "./pages/Match/SuccessPage";
 import RecoveryStatus from "./pages/RecoveryStatus";
 import LawyerWritePage from "./pages/Lawyer/LawyerWritePage";
 import LawyerHome from "./pages/Lawyer/LawyerHome";
+import BNPLPage from "./pages/BNPLPage";
 
 const Layout = () => (
   <>
@@ -39,6 +40,7 @@ const AppRouter = () => (
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/board" element={<BoardPage />} />
         <Route path="/write" element={<WritePage />} />
+        <Route path="/pay" element={<BNPLPage />} />
 
         <Route path="/lawyer_result/*">
           <Route path="" element={<LawyerPage />} />

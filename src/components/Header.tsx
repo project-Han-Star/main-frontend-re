@@ -14,6 +14,10 @@ const Header = () => {
     }
     navigate("/login");
   };
+  const HandleLogout = () => {
+    logout();
+    navigate("/");
+  };
   return (
     <div className="flex items-center bg-primary h-[60px] z-10 absolute top-0 w-full">
       <div className="flex justify-between w-full mx-[300px]">
@@ -30,7 +34,7 @@ const Header = () => {
           >
             {user ? `${user.username}님` : "로그인"}
           </span>
-          <span onClick={logout} className="font-bold text-white">
+          <span onClick={HandleLogout} className="font-bold text-white">
             {user ? "로그아웃" : "도움말"}
           </span>
         </div>

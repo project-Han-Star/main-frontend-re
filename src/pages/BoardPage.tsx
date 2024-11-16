@@ -41,18 +41,19 @@ const BoardPage = () => {
                 30초만에 변호사 매칭
               </Button>
             </div>
-            <div className="bg-white w-[353px] h-[245px] rounded-2xl grid place-items-center relative">
+            {/* <div className="bg-white w-[353px] h-[245px] rounded-2xl grid place-items-center relative">
               <p className="relative text-2xl text-center bottom-4">
                 AI로 부채 상환내역 기록하고 <br />
                 불법사금융 정리하기
               </p>
               <Button
+                onClick={() => navigate("/pay")}
                 className="w-[303px] h-[60px] absolute bottom-4 text-xl font-normal rounded-2xl"
                 secondary
               >
                 불법 사채 끝장내기
               </Button>
-            </div>
+            </div> */}
           </div>
         </div>
         <h1 className="absolute text-5xl font-bold text-white bottom-16">

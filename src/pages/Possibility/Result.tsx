@@ -46,21 +46,24 @@ const PossibilityResult = () => {
         setIsLoading(false);
       });
   }, []);
-  if (isLoading) return <p>Loading...</p>;
+  if (isLoading)
+    return (
+      <div className="flex flex-col items-center justify-center w-full h-screen bg-primary">
+        <div className="absolute -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2">
+          <h1 className="text-6xl font-bold text-white">
+            회생 가능성을 계산하고 있습니다
+          </h1>
+          <h3 className="mt-8 text-4xl font-bold text-white">
+            잠시만 기다려 주세요...
+          </h3>
+        </div>
+      </div>
+    );
   else {
     return (
       <>
         <div className="flex flex-col items-center justify-center w-full h-screen bg-primary">
-          {!result ? (
-            <div>
-              <h1 className="text-6xl font-bold text-white">
-                회생 가능성을 계산하고 있습니다
-              </h1>
-              <h3 className="mt-8 text-4xl font-bold text-white">
-                잠시만 기다려 주세요...
-              </h3>
-            </div>
-          ) : (
+          {result && (
             <div className="absolute -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2">
               <ProbabilityRate
                 rate={result?.message.score}
