@@ -38,7 +38,7 @@ const ChatPage = () => {
       }
       return [];
     },
-    retry: false,
+    refetchInterval: 1000,
   });
 
   const SendMessage = async () => {
